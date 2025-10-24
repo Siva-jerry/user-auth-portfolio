@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - UserAuth Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="main-wrapper">
+    <div class="container">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <div class="input-group">
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" placeholder="Enter your name">
+        </div>
+        <div class="input-group">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" placeholder="Enter your email">
+        </div>
+        <div class="input-group">
+          <label for="regPassword">Password</label>
+          <input type="password" id="regPassword" placeholder="Create a password">
+        </div>
+        <div class="input-group">
+          <label for="regConfirm">Confirm Password</label>
+          <input type="password" id="regConfirm" placeholder="Re-enter password">
+        </div>
+        <p id="registerError" class="error-text"></p>
+        <button type="submit">Register Now</button>
+      </form>
+      <p style="margin-top:18px;font-size:14px;">Already registered? <a href="index.html">Login</a></p>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;margin-left:40px;">
+      <img src="assets/images/register-illustration.jpg" alt="Register Visual" style="max-width:300px;width:100%;border-radius:16px;box-shadow:0 2px 24px #aaa;">
+    </div>
+  </div>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
