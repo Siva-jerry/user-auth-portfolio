@@ -4,6 +4,23 @@
   <meta charset="UTF-8">
   <title>Login - UserAuth Portfolio</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Firebase App (core) -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script>
+    // ==== REPLACE WITH YOUR OWN PROJECT CONFIG ====
+    const firebaseConfig = {
+       apiKey: "AIzaSyC5pgk-eTXn7-4nPF4Em29TlS1L7osJPdc",
+  authDomain: "apk-4d576.firebaseapp.com",
+  projectId: "apk-4d576",
+  storageBucket: "apk-4d576.firebasestorage.app",
+  messagingSenderId: "411610834172",
+  appId: "1:411610834172:web:69818da9e4c7189ed9e379"
+      // ... other config fields
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </head>
 <body>
   <div class="main-wrapper">
@@ -11,8 +28,8 @@
       <h2>LOGIN</h2>
       <form id="loginForm">
         <div class="input-group">
-          <label for="loginUsername">Username</label>
-          <input type="text" id="loginUsername" placeholder="Enter your username">
+          <label for="loginUsername">Email</label>
+          <input type="email" id="loginUsername" placeholder="Enter your email">
         </div>
         <div class="input-group">
           <label for="loginPassword">Password</label>
@@ -21,11 +38,6 @@
         <p id="loginError" class="error-text"></p>
         <button type="submit">Login Now</button>
       </form>
-      <div class="social-login">
-        <div class="social-btn">
-          <img src="assets/images/google-icon.jpg" alt="Google">Login with Google
-        </div>
-      </div>
       <p style="margin-top:18px;font-size:14px;">Don't have an account? <a href="register.html">Register</a></p>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;margin-left:40px;">

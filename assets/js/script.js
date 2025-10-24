@@ -1,25 +1,32 @@
-// Login validation
+// Login validation with Firebase auth
 if (document.getElementById('loginForm')) {
   document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const username = document.getElementById('loginUsername').value.trim();
+    const email = document.getElementById('loginUsername').value.trim();
     const password = document.getElementById('loginPassword').value;
     const error = document.getElementById('loginError');
     error.textContent = "";
-    if (username.length < 3) {
-      error.textContent = "Username must be at least 3 characters.";
+    if (!email || email.length < 3) {
+      error.textContent = "Please enter a valid email.";
       return;
     }
     if (password.length < 6) {
       error.textContent = "Password must be at least 6 characters.";
       return;
     }
-    // Redirect to portfolio page
-    location.href = "portfolio.html";
+    // Firebase login
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Success: take user to portfolio page
+        location.href = "portfolio.html";
+      })
+      .catch((err) => {
+        error.textContent = "Login failed: " + err.message;
+      });
   });
 }
 
-// Registration validation
+// Registration validation (frontend only)
 if (document.getElementById('registerForm')) {
   document.getElementById('registerForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -33,7 +40,7 @@ if (document.getElementById('registerForm')) {
       error.textContent = "Name must be at least 3 characters.";
       return;
     }
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    const emailPattern = /^[^ ]+@[^ ]+.[a-z]{2,3}$/;
     if (!emailPattern.test(email)) {
       error.textContent = "Enter a valid email address.";
       return;
@@ -46,7 +53,14 @@ if (document.getElementById('registerForm')) {
       error.textContent = "Passwords do not match.";
       return;
     }
-    // Redirect to login page
-    location.href = "index.html";
+    // Firebase registration
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // You could update user profile here if needed
+        location.href = "index.html";
+      })
+      .catch((err) => {
+        error.textContent = "Registration failed: " + err.message;
+      });
   });
 }
